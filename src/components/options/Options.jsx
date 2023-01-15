@@ -1,10 +1,14 @@
 import React, { useEffect, useRef } from "react"
 import ReactDOM from "react-dom"
-import mapboxgl from "mapbox-gl";
+import mapboxgl from "mapbox-gl"
+// import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
+// import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 import geoJson from "./input_data.json"
 import './OptionsStyles.css'
 
-mapboxgl.accessToken = "pk.eyJ1IjoiaXdhaGl0aCIsImEiOiJjbGJ3anlsbmkwZWNsM29wcTRqMDZya3h6In0.sgybKNvsRcUJv9R0btx-rQ";
+// mapboxgl.accessToken = "pk.eyJ1IjoiaXdhaGl0aCIsImEiOiJjbGJ3anlsbmkwZWNsM29wcTRqMDZya3h6In0.sgybKNvsRcUJv9R0btx-rQ"
+mapboxgl.accessToken = "pk.eyJ1IjoiaXdhaGl0aCIsImEiOiJjbGJ3azB5MjcwamMzM3hyOXdndWQxNTdjIn0.AmwjFAEb5Gbb3IzM1Lia0g";
+// mapboxgl.workerClass = MapboxWorker;
 
 const Marker = ({ onClick, children, feature }) => {
     const _onClick = () => {

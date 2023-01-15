@@ -6,8 +6,8 @@ import mapboxgl from "mapbox-gl"
 import geoJson from "./input_data.json"
 import './OptionsStyles.css'
 
-// mapboxgl.accessToken = "pk.eyJ1IjoiaXdhaGl0aCIsImEiOiJjbGJ3anlsbmkwZWNsM29wcTRqMDZya3h6In0.sgybKNvsRcUJv9R0btx-rQ"
-mapboxgl.accessToken = "pk.eyJ1IjoiaXdhaGl0aCIsImEiOiJjbGJ3azB5MjcwamMzM3hyOXdndWQxNTdjIn0.AmwjFAEb5Gbb3IzM1Lia0g";
+mapboxgl.accessToken = "pk.eyJ1IjoiaXdhaGl0aCIsImEiOiJjbGJ3anlsbmkwZWNsM29wcTRqMDZya3h6In0.sgybKNvsRcUJv9R0btx-rQ"
+// mapboxgl.accessToken = "pk.eyJ1IjoiaXdhaGl0aCIsImEiOiJjbGJ3azB5MjcwamMzM3hyOXdndWQxNTdjIn0.AmwjFAEb5Gbb3IzM1Lia0g";
 // mapboxgl.workerClass = MapboxWorker;
 
 const Marker = ({ onClick, children, feature }) => {

@@ -1,29 +1,8 @@
 .options {
     width: 100%;
     height: 100vh;
-    background-color: blue;
-    /* background: url('../../assets/options-bg.jpg') no-repeat center center/cover; */
-}
-
-.options .container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.options .top {
-    margin-top: 7rem;
-    color: #f6f6f6;
-}
-.options .bottom {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 4rem;
+    /* background-color: rgb(76, 0, 255); */
+    /* background: url('../../assets/handling-bg.jpg') no-repeat center center/cover; */
 }
 
 @media screen and (max-width:540px) {
@@ -32,3 +11,38 @@
         align-items: center;
     }
 }
+
+.map-container {
+    /* position: absolute; */
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .sidebarStyle {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 12px;
+    background-color: #404040;
+    color: #ffffff;
+    z-index: 1 !important;
+    padding: 6px;
+    font-weight: bold;
+  }
+  
+  .marker {
+    background-color: #2a45c0;
+    /* border: 1px solid blue; */
+    color: white;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 5px;
+    margin: 4px 2px;
+    border-radius: 50%;
+  }

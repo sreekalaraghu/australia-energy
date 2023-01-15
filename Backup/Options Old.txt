@@ -1,0 +1,36 @@
+import React, {useState} from 'react'
+import ReactMapGL from 'react-map-gl'
+import './OptionsStyles.css'
+
+const Options = () => {
+
+    const[viewport, setViewport] = useState({
+        latitude: 25.2744,
+        longitude: 133.7751,
+        width: '100vw',
+        height: '100vw',
+        zoom: 10
+
+    });
+
+    return (
+        <div name='options' className='options'>
+            <div className="container">
+                <ReactMapGL 
+                {...viewport} 
+                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+                onViewportChange = {viewport => {setViewport(viewport);
+                }}
+                >
+                    Markers
+                </ReactMapGL>
+                {/* <div className="top">
+                    <h1>Explore - Map</h1>
+                </div> */}
+                
+            </div>
+        </div>
+    )
+}
+
+export default Options

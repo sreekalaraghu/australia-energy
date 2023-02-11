@@ -1,3 +1,8 @@
+/*Author : Sreekala Raghuram
+ Last updated Date :11/02/2023
+
+*/
+
 import React from 'react'
 import './HandlingStyles.css'
 import events from '../../data/timeline.json';

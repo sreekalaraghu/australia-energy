@@ -1,0 +1,2 @@
+const textData =
+    { 'Hazelwood power station closure the latest blow for coal' : 'Like a junction point in those intriguing domino constructions which sends tiles tumbling in all directions, the closure of Victoria national power grid and its customers'}

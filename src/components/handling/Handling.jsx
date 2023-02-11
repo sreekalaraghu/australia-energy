@@ -31,7 +31,7 @@ const Handling = () => {
         setClickedText(event.target.innerText);
         console.log(event.target.innerText)
         setIsPopupVisible(!isPopupVisible)
-        
+        console.log(isPopupVisible)
       }
       
       function closePopup() {
@@ -121,11 +121,11 @@ const Handling = () => {
                     filtereddata.map((data,index) => (
 
           
-                  <div>
+                  <>
                   {
                   data.paragraphs.map((text,index) =>
                   (
-                  <p ><span className='story-headings' onClick={handlePopup} >{text.text}
+                  <p className='story-headings'><span  onClick={handlePopup} >{text.text}
 
                   </span>
                   </p>
@@ -134,9 +134,11 @@ const Handling = () => {
                   }
             
            
-                  </div>
+                  </>
                 ))}
-                </div>
+
+               {isPopupVisible && <Popup closePopup={closePopup} isPopupVisible={isPopupVisible} clickedText={clickedText}/>}
+              </div>
 
             </div>
 

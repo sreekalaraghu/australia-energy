@@ -141,7 +141,7 @@
     text-align: center;
   }
 
-  a {
+  .source-link {
      text-decoration: underline;
      color:blue;
      display: inline-block;

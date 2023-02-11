@@ -21,7 +21,7 @@ return (
     <div className ={isPopupVisible ? "popup-box":"popup-box"}>
          <h3>{filtertext[0].title}</h3>
          <p className="popup-text">{filtertext[0].summary}</p>
-         <a href={filtertext[0].url}>Click for more info</a>
+         <a  className= "source-link" href={filtertext[0].url}>Click for more info</a>
        <button className="popup-button" onClick={closePopup}>Close</button> 
     </div>
   )

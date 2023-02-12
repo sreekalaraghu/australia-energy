@@ -1,8 +1,3 @@
-/*Author : Sreekala Raghuram
- Last updated Date :11/02/2023
-
-*/
-
 import React from 'react'
 import './HandlingStyles.css'
 import events from '../../data/timeline.json';
@@ -14,15 +9,15 @@ const Handling = () => {
     const [filteredevent,setFilteredevent] = useState(0);
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     const [clickedText,setClickedText] = useState('')
-    const year = [...new Set(events.map(item => item.year))]
+    const year = [...new Set(events.map(item => item.decade))]
     const [selectedState,setselctedState] = useState(null)
     const [selectedstation,setselectedstation] = useState(null)
-    const [selectedYear,setSelectedYear] = useState(1920)
+    const [selectedYear,setSelectedYear] = useState(2020)
 
     const filtereddata =events.filter( data =>{
         return (
           (!selectedState || data.state === selectedState) &&
-          (!selectedstation || data.station === selectedstation) && (!selectedYear || data.year === selectedYear)
+          (!selectedstation || data.energy_type === selectedstation) && (!selectedYear || data.decade === selectedYear)
         );
       })
 
@@ -75,7 +70,7 @@ const Handling = () => {
             {events && year.map((data, index) => (
                 <>
               
-                    <button className='button' key={index} value={data} onClick={() => handleyear(data)}>
+                    <button className={`button ${selectedYear === data ? "selected" : ""}`} key={index} value={data} onClick={() => handleyear(data)}>
                     {data}
                     </button>
               
@@ -88,24 +83,24 @@ const Handling = () => {
       const Statefilter =() =>{
         return(
           <div >
-          <button className='button' onClick={() => filterstate("VIC")} style ={selectedState=== 'VIC' ? {backgroundColor :"yellow"}: {}}>VIC</button>
-          <button className='button' onClick={() => filterstate('QLD')} style ={selectedState === 'QLD' ? {backgroundColor :"yellow"}: {}}>QLD</button>
-          <button className='button' onClick={() => filterstate('NSW')} style ={selectedState === 'NSW' ? {backgroundColor :"yellow"}: {}}>NSW</button>
-          <button className='button' onClick={() => filterstate('SA')} style ={selectedState === 'SA' ? {backgroundColor :"yellow"}: {}}>SA</button>
-          <button className='button' onClick={() => filterstate('WA')} style ={selectedState === 'WA' ? {backgroundColor :"yellow"}: {}}>WA</button>
-          <button className='button' onClick={() => filterstate('TAS')} style ={selectedState === 'TAS' ? {backgroundColor :"yellow"}: {}}>TAS</button>
+          <button className='button' onClick={() => filterstate("VIC")} style ={selectedState=== 'VIC' ? {backgroundColor :"blue"}: {}}>VIC</button>
+          <button className='button' onClick={() => filterstate('QLD')} style ={selectedState === 'QLD' ? {backgroundColor :"blue"}: {}}>QLD</button>
+          <button className='button' onClick={() => filterstate('NSW')} style ={selectedState === 'NSW' ? {backgroundColor :"blue"}: {}}>NSW</button>
+          <button className='button' onClick={() => filterstate('SA')} style ={selectedState === 'SA' ? {backgroundColor :"blue"}: {}}>SA</button>
+          <button className='button' onClick={() => filterstate('WA')} style ={selectedState === 'WA' ? {backgroundColor :"blue"}: {}}>WA</button>
+          <button className='button' onClick={() => filterstate('TAS')} style ={selectedState === 'TAS' ? {backgroundColor :"blue"}: {}}>TAS</button>
         </div>
         )
       }
      const Stationfilter =( )=>{
       return (
         <div id="station-filter">
-          <button className='button' onClick={() => filterstation('coal')} style ={selectedstation === 'coal' ? {backgroundColor :"yellow"}: {}}>Coal</button>
-          <button className='button' onClick={() => filterstation('hydro')} style ={selectedstation === 'hydro' ? {backgroundColor :"yellow"}: {}} >Hydro</button>
-          <button className='button' onClick={() => filterstation('small_scale_PV')} style ={selectedstation === 'small_scale_PV' ? {backgroundColor :"yellow"}: {}} >Small PV</button>
-          <button className='button' onClick={() => filterstation('large_scale_PV')} style ={selectedstation === 'large_scale_PV' ? {backgroundColor :"yellow"}: {}} >Large PV</button>
-          <button className='button' onClick={() => filterstation('wind')} style ={selectedstation === 'wind' ? {backgroundColor :"yellow"}: {}}>Wind</button>
-          <button className='button' onClick={() => filterstation('biomass')} style ={selectedstation === 'biomass' ? {backgroundColor :"yellow"}: {}} >Biomass</button>
+          <button className='button' onClick={() => filterstation('coal')} style ={selectedstation === 'coal' ? {backgroundColor :"blue"}: {}}>Coal</button>
+          <button className='button' onClick={() => filterstation('hydro')} style ={selectedstation === 'hydro' ? {backgroundColor :"blue"}: {}} >Hydro</button>
+          <button className='button' onClick={() => filterstation('small_scale_PV')} style ={selectedstation === 'small_scale_PV' ? {backgroundColor :"blue"}: {}} >Small PV</button>
+          <button className='button' onClick={() => filterstation('large_scale_PV')} style ={selectedstation === 'large_scale_PV' ? {backgroundColor :"blue"}: {}} >Large PV</button>
+          <button className='button' onClick={() => filterstation('wind')} style ={selectedstation === 'wind' ? {backgroundColor :"blue"}: {}}>Wind</button>
+          <button className='button' onClick={() => filterstation('biomass')} style ={selectedstation === 'biomass' ? {backgroundColor :"blue"}: {}} >Biomass</button>
         </div>
       
       )
@@ -122,26 +117,17 @@ const Handling = () => {
                   <li><Stationfilter id="station-filter"/></li>
                   </ul>
                     {/* <h1>StoryPanel</h1> */}
-                  {filtereddata &&
-                    filtereddata.map((data,index) => (
-
-          
-                  <>
-                  {
-                  data.paragraphs.map((text,index) =>
-                  (
-                  <p className='story-headings'><span  onClick={handlePopup} >{text.text}
-
-                  </span>
-                  </p>
-                
-                  ))
-                  }
-            
-           
-                  </>
-                ))}
-
+                  {filtereddata  && (
+                    <div className='heading-container' style={{ height: '500px', width: '700px', overflow: 'auto' }}>
+                    {
+                      filtereddata.map((data,index) => (
+                      <p className='story-headings'>
+                        <span  onClick={handlePopup} >{data.title}</span>
+                      </p>      
+               
+                      ))}
+                    </div>
+                   )}
                {isPopupVisible && <Popup closePopup={closePopup} isPopupVisible={isPopupVisible} clickedText={clickedText}/>}
               </div>
 
